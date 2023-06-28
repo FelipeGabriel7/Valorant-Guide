@@ -1,0 +1,126 @@
+@import "../../../styles/medias_layouts";
+
+%btn-hover-navbar{
+    transition: .6s all ease-in-out;
+    padding: 0.5em;
+    box-shadow: 0.2em 0.2em 0.4em #22222275;
+    background: rgba(215, 25, 0, 0.913);
+
+}
+
+.Navbar{
+    font-family: monospace , 'sans-serif';
+    width: 100%;
+
+    &_container{
+        display: flex;
+        width: 100%;
+        position: fixed;
+        z-index: 10;
+        gap: 2em;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1em;
+        background: linear-gradient(90deg, rgb(164, 164, 164) 0%, rgba(255,38,0,1) 100%);
+
+
+        .menu_mobile{
+
+            display: none;
+
+            @include tablet{
+                transition: 0.6S all ease-in-out;
+                display: block;
+                font-size: 3em;
+                cursor: pointer;
+                color: #fff;
+
+                
+            }
+        }
+
+        &_image{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.2em;
+            font-size: 1em;
+            color: #fff;
+
+            @include tablet{
+                margin: 0 auto;
+            }
+
+            .image_logo{
+                width: 300px;
+
+          
+            }
+        }
+
+        &_links{
+            display: flex;
+            gap: 2em;
+            text-decoration: none;
+
+
+            @include tablet{
+                animation: animateMenu 0.8s all ease-in;
+                transform: 0.5s all ease-in;
+                width: 100%;
+                top: 100%;
+                right: 0%;
+                padding: 4em;
+                background: linear-gradient(90deg, rgb(164, 164, 164) 0%, rgba(255,38,0,1) 100%);
+                position: absolute;
+                flex-direction: column;
+            }
+        }
+
+
+        &_invetory{
+            display: flex;
+            gap: 3em;
+            color: #fcfcfc;
+
+            @include tablet{
+                margin: 0 auto;
+                align-self: center;
+                justify-content: center;
+                text-align: center;
+            }
+        }
+    }
+
+    .link{
+        text-decoration: none;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        cursor: pointer;
+        transition: .4s all ease-in-out;
+
+
+        &:hover{
+            border-radius: 0.3em;
+            transition: .2s all ease-in;
+            @extend %btn-hover-navbar;
+        }
+
+
+    }
+}
+
+
+@keyframes animateMenu{
+    0%{
+        transition: .5s all ease-in;
+        transform: translateX(-400px);
+    }100%{
+        transition: .5s all ease-in;
+        transform: translateX(0px);
+    }
+}

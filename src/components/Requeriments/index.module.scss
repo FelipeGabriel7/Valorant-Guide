@@ -1,0 +1,25 @@
+.container{
+    width: 100%;
+    padding: 4em;
+    margin: 2em auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    flex-direction: column;
+
+    &_title{
+        font-size: 2em;
+        font-weight: 600;
+        font-family: 'Franklin Gothic' , 'Arial Narrow', Arial, sans-serif;
+    }
+
+    &_card{
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 2em;
+        justify-content: space-evenly;
+    }
+
+}
+

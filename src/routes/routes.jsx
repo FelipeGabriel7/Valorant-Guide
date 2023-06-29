@@ -4,6 +4,7 @@ import  NavbarComponent   from "../components/Templates/Navbar/Navbar";
 import { Home } from "../components/Home";
 import { Footer } from "../components/Templates/Footer/Footer";
 import { AgentsComponent } from "../components/Agents";
+import { FavoriteComponents } from "../components/Favorites";
 
 
 
@@ -19,6 +20,7 @@ export const RoutesProject = () => {
                         <Route path="/maps" element={{}}/>
                         <Route path="/weapons" element={{}}/>
                         <Route path="/gamemode" element={{}} />
+                        <Route path="/favorites" element={ <FavoriteComponents/> }/>
                     </Routes>    
                     <Footer/>
             </Container>

@@ -1,20 +1,41 @@
+import { useEffect, useState } from 'react'
 import {card , card_image , card_name , abilities , abilities_image , card_buttons , card_buttons_details , card_buttons_favorites} from './index.module.scss'
 import axios from 'axios'
+import { Modal } from '../Modal'
+import { useDispatch, useSelector } from 'react-redux'
+import { favoritePerson } from '../../../reducers/favoriteReducer/actions'
 
 export const CardAgent = ({ agent }) => {
 
-    console.log(agent)
+    const [modal , setModal] = useState(false)
+    const [data , setData] = useState([])
+    const { favorites } = useSelector((rootReducer) => rootReducer.favoriteReducer)
+
+    console.log(favorites)
+
+    const dispatch = useDispatch();
 
 
     async function handleAgent(uuid){
-        const request = await axios.get('https://valorant-api.com/v1/agents/' + uuid)
+        setModal(prevModal => !prevModal)
 
-        console.log(request.data.data)
+        try {
+            const request = await axios.get('https://valorant-api.com/v1/agents/' + uuid)
+            setData(request.data.data)
+        }catch(e){
+            console.log(e)
+        }
     }
+
+
+    function handleAdd(item){
+        favoritePerson(dispatch , item)
+    }
+
 
     return (
 
-      
+        <>
 
         <div className={card}>
             <img className={card_image} src={agent.displayIcon} alt={agent.displayName} />
@@ -29,10 +50,18 @@ export const CardAgent = ({ agent }) => {
 
             <div className={card_buttons}>
                 <button className={card_buttons_details} onClick={() => handleAgent(agent.uuid)}> Ver detalhes </button>
-                <button className={card_buttons_favorites}> Adicionar aos favoritos </button>
+                <button className={card_buttons_favorites}  onClick={() => handleAdd(agent)} > Adicionar aos favoritos </button>
             </div>
     
         </div>
+
+        {modal &&  (
+            <Modal data={agent} modalState={setModal}/> 
+        )}
+        
+        </>
+
+      
       
     )
 }

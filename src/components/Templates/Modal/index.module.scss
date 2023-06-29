@@ -1,0 +1,131 @@
+.modal{
+    min-width: 80%;
+    height: 80vh;
+    top: 15%;
+    border-radius: 0.5em;
+    box-shadow: 0.2em 0.2em 0.4em #020202;
+    background-position: center center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background: url('../../../utils/images/valorant-logo.jpg');
+    z-index: 2;
+    padding: 2em;
+    position: fixed;
+}
+
+.closeModal{
+    position: relative;
+    left: 95%;
+    color: #fff;
+    margin: 0.2em;
+    text-align: end;
+    cursor: pointer;
+    font-size: 2em;
+    transition: .5s all ease-in;
+
+    &:hover{
+        transition: .5s all ease-in;
+        color: #ebebeb;
+    }
+}
+
+
+.container_modal{
+    display: flex;
+    background-repeat: no-repeat;
+
+    .modal_image{
+        display: flex;
+        width: 550px;
+    }
+
+    .modal_desc{
+        padding: 2em;
+        color: #fff;
+        display: flex;
+        gap: 2em;
+        flex-direction: column;
+
+        &>p{
+            font-size: 0.8em;
+            font-weight: 500;
+            width: 60%;
+        }
+
+        &>img{
+            position: relative;
+            left: 10%;
+            width: 20%;
+            top: 0;
+        }
+
+        &_abilitis{
+            font-size: 1em;
+            display: grid;
+            grid-template-columns: repeat(auto-fit , minmax(300px , 1fr));
+            flex-wrap: wrap;
+            gap: 1em;
+            align-items: center;
+
+            &>span{
+                padding: 1em;
+                background: #020203;
+                border-radius: 0.8em;
+                box-shadow: 0.1em 0.1em 0.2em 0.1em #c90c0231;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1em;
+                flex-direction: column;
+                cursor: pointer;
+                transition: 0.4s all ease-in;
+
+                &:hover{
+                    transition: 0.4s all ease-in;
+                    color: #000;
+                    background: #fff;
+                }
+            }
+
+            &>span > img{
+                width: 50px;
+                box-shadow: 0.1em 0.1em 0.1em #222;
+                background: #f14;
+                border-radius: 50%;
+            }
+        }
+
+        &_txt{
+            width: 40%;
+            font-size: 2em;
+            font-weight: 600;
+            border-bottom: 2px solid rgb(202, 6, 6);
+        }
+
+        &_button{
+            margin: 0 auto;
+            width: 80%;
+            display: flex;
+            gap: 3em;
+            border-radius: 1.5em;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6em;
+            background:  rgb(202, 6, 6);
+            color: #fff;
+            font-size: 1.2em;
+            border: none;
+            box-shadow: 0.2em 0.2em 0.8em #050505;
+            transition: 0.5s all ease-in;
+            cursor: pointer;
+
+
+            &:hover{
+                transition: 0.5s all ease-in;
+                color: #222;
+                background:  rgba(250, 250, 250, 0.8)
+            }
+        }
+    }
+}

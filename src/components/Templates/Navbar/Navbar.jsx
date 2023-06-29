@@ -51,22 +51,8 @@ function NavbarComponent() {
 
                 )}
 
-               
-
-
-
-               
-
-
-
-
-
-
-
-
-
                 <div className={Navbar_container_invetory}>
-                    <Link className={link} to="/favoites"> Favoritos ( {stateFavorites.count} ) </Link>
+                    <Link className={link} to="/favorites"> Favoritos ( {stateFavorites.count} ) </Link>
                 </div>
 
             </nav>

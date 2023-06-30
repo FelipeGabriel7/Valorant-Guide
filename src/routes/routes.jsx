@@ -5,6 +5,7 @@ import { Home } from "../components/Home";
 import { Footer } from "../components/Templates/Footer/Footer";
 import { AgentsComponent } from "../components/Agents";
 import { FavoriteComponents } from "../components/Favorites";
+import { RankComponent } from "../components/Ranks";
 
 
 
@@ -16,7 +17,7 @@ export const RoutesProject = () => {
                     <Routes>
                         <Route path="/" exact element={<Home /> }/>
                         <Route path="/agents" element={ <AgentsComponent/> }/>
-                        <Route path="/ranks" element={{}}/>
+                        <Route path="/ranks" element={ <RankComponent /> }/>
                         <Route path="/maps" element={{}}/>
                         <Route path="/weapons" element={{}}/>
                         <Route path="/gamemode" element={{}} />

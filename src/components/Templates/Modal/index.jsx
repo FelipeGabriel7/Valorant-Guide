@@ -24,7 +24,7 @@ export const Modal = ({ data, modalState }) => {
             <AiFillCloseCircle className={closeModal} onClick={handleClose} />
 
             <div className={container_modal}
-                style={{ backgroundImage: `url(${data.background})` }}
+                // style={{ backgroundImage: `url(${data.background})` }}
             >
                 <img src={data.fullPortrait} alt={data.displayName} className={modal_image} />
 

@@ -11,7 +11,7 @@ import {
 import { Link } from 'react-router-dom';
 import imageLogo from '../../../utils/images/valorant-logo-removebg-preview.png'
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CgMenu } from 'react-icons/cg'
 import { AiOutlineClose } from 'react-icons/ai'
 
@@ -25,31 +25,60 @@ function NavbarComponent() {
         setMenuMobile(prevMenu => !prevMenu)
     }
 
+ 
+
     return (
         <div className={Navbar}>
             <nav className={Navbar_container}>
                 <div className={Navbar_container_image}>
-                   <Link to="/"> <img src={imageLogo} alt="logo" className={image_logo} /> </Link> 
+                    <Link to="/"> <img src={imageLogo} alt="logo" className={image_logo} /> </Link>
                 </div>
 
-                {!menuMobile && (
-                    <CgMenu onClick={handleMenu} className={menu_mobile} />
-                )}
 
-                {menuMobile && (
-                    <>
-                        <AiOutlineClose onClick={handleMenu} className={menu_mobile} />
+                <>
+                    {!menuMobile && (
+                            <CgMenu onClick={handleMenu} className={menu_mobile} />
+                    )}
 
-                        <div className={Navbar_container_links}>
-                            <Link className={link} to="/agents"> Agentes </Link>
-                            <Link className={link} to="/ranks"> Patentes </Link>
-                            <Link className={link} to="/maps"> Mapas  </Link>
-                            <Link className={link} to="/weapons"> Arsenal </Link>
-                            <Link className={link} to="/gamemode"> Modos de Jogo </Link>
-                        </div>
-                    </>
+                
+                </>
 
-                )}
+                <>
+
+                    {menuMobile && (
+
+                        <> 
+                              <AiOutlineClose onClick={handleMenu} className={menu_mobile} />
+
+
+
+                            <div className={Navbar_container_links}>
+                                <Link className={link} to="/agents"> Agentes </Link>
+                                <Link className={link} to="/ranks"> Patentes </Link>
+                                <Link className={link} to="/maps"> Mapas  </Link>
+                                <Link className={link} to="/weapons"> Arsenal </Link>
+                                <Link className={link} to="/gamemode"> Modos de Jogo </Link>
+                            </div>
+
+                        </>
+                        
+                      
+
+                    )}
+
+                </>
+
+
+
+
+
+
+
+
+
+
+
+
 
                 <div className={Navbar_container_invetory}>
                     <Link className={link} to="/favorites"> Favoritos ( {stateFavorites.count} ) </Link>

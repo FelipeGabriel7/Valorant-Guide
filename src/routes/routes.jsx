@@ -6,6 +6,7 @@ import { Footer } from "../components/Templates/Footer/Footer";
 import { AgentsComponent } from "../components/Agents";
 import { FavoriteComponents } from "../components/Favorites";
 import { RankComponent } from "../components/Ranks";
+import { ArsenalComponent } from "../components/Arsenal";
 
 
 
@@ -19,7 +20,7 @@ export const RoutesProject = () => {
                         <Route path="/agents" element={ <AgentsComponent/> }/>
                         <Route path="/ranks" element={ <RankComponent /> }/>
                         <Route path="/maps" element={{}}/>
-                        <Route path="/weapons" element={{}}/>
+                        <Route path="/weapons" element={ <ArsenalComponent/> }/>
                         <Route path="/gamemode" element={{}} />
                         <Route path="/favorites" element={ <FavoriteComponents/> }/>
                     </Routes>    

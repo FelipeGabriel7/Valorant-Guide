@@ -6,12 +6,13 @@ import {
     Navbar_container_links,
     link,
     image_logo,
-    menu_mobile
+    menu_mobile,
+    responsive_navbar
 } from './Navbar.module.scss'
 import { Link } from 'react-router-dom';
 import imageLogo from '../../../utils/images/valorant-logo-removebg-preview.png'
 import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { CgMenu } from 'react-icons/cg'
 import { AiOutlineClose } from 'react-icons/ai'
 
@@ -19,13 +20,12 @@ import { AiOutlineClose } from 'react-icons/ai'
 function NavbarComponent() {
 
     const stateFavorites = useSelector(rootReducer => rootReducer.favoriteReducer)
-    const [menuMobile, setMenuMobile] = useState(true);
+    const [menuMobile, setMenuMobile] = useState(false);
 
-    const handleMenu = () => {
+    const showNavbar = () => {
         setMenuMobile(prevMenu => !prevMenu)
     }
 
- 
 
     return (
         <div className={Navbar}>
@@ -35,50 +35,28 @@ function NavbarComponent() {
                 </div>
 
 
-                <>
-                    {!menuMobile && (
-                            <CgMenu onClick={handleMenu} className={menu_mobile} />
-                    )}
+                        {!menuMobile && (
+                                   <CgMenu onClick={showNavbar} className={menu_mobile} />
+                        )}
+                     
 
-                
-                </>
-
-                <>
-
-                    {menuMobile && (
+                        {menuMobile && (
+                            <AiOutlineClose onClick={showNavbar} className={menu_mobile} />
+                        )}
 
                         <> 
-                              <AiOutlineClose onClick={handleMenu} className={menu_mobile} />
 
-
-
-                            <div className={Navbar_container_links}>
+                                <div className={
+                                    menuMobile ? `${responsive_navbar}`  :  `${Navbar_container_links}` 
+                                }>
                                 <Link className={link} to="/agents"> Agentes </Link>
                                 <Link className={link} to="/ranks"> Patentes </Link>
-                                <Link className={link} to="/maps"> Mapas  </Link>
                                 <Link className={link} to="/weapons"> Arsenal </Link>
+                                <Link className={link} to="/maps"> Mapas  </Link>
                                 <Link className={link} to="/gamemode"> Modos de Jogo </Link>
-                            </div>
-
+                                </div>
+ 
                         </>
-                        
-                      
-
-                    )}
-
-                </>
-
-
-
-
-
-
-
-
-
-
-
-
 
                 <div className={Navbar_container_invetory}>
                     <Link className={link} to="/favorites"> Favoritos ( {stateFavorites.count} ) </Link>

@@ -39,28 +39,40 @@ export const RankComponent = () => {
                 <div className={container_ranks}>
 
                     {ranks && ranks.map((rank, id) => {
-                        if(id <= 2) return;
+                        if (id <= 2) return;
                         return (
-                            <div key={id} className={container_card_ranks} style={{
 
-                                display: 'flex',
-                                flexDirection: 'column',
-                                gap: '2em',
-                                fontWeight: '500',
-                                backgroundColor: `${rank.tierName === 'RADIANT' ? 'rgb(255, 166, 0)' :  `#${rank.color}` } `
+                            <>
 
-                            }}>
+                               
+                               
 
-                                {rank.largeIcon && (
-                                    <img src={rank.largeIcon} alt={rank.divisionName} style={{
+                                <div key={id} className={container_card_ranks} style={{
 
-                                    }} />
-                                )}
-                                <span style={{
-                                  
-                                }}
-                                > {rank.tierName} </span>
-                            </div>
+                                    display: 'flex',
+                                    margin: `${rank.tierName === 'RADIANT' ? '0 auto' : ''}`,
+                                    flexDirection: 'column',
+                                    gap: '2em',
+                                    maxWidth: `${rank.tierName === 'RADIANT' ? '800px' : ''}`,
+                                    fontWeight: '500',
+                                    backgroundColor: `${rank.tierName === 'RADIANT' ? 'rgb(255, 166, 0)' : `#${rank.color}`} `
+
+                                }}>
+
+                                    {rank.largeIcon && (
+                                        <img src={rank.largeIcon} alt={rank.divisionName} style={{
+
+                                        }} />
+                                    )}
+                                    <span style={{
+
+                                    }}
+                                    > {rank.tierName} </span>
+                                </div>
+
+
+
+                            </>
 
 
 

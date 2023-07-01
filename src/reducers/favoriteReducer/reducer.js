@@ -9,7 +9,7 @@ export const favoriteReducer = (state = favoriteState , action) => {
 
         
                     if(state.favorites.includes(action.payload)){
-                        return {...state}
+                        return {...state , error: 'Já existe esse personagem nos seus favoritos'}
                     }
 
                     return {...state ,
@@ -33,6 +33,15 @@ export const favoriteReducer = (state = favoriteState , action) => {
                     return {...state , favorites: filteredItems , count: state.count <= 0 ? state.count : state.count - 1}
 
          
+
+        case typesActions.loading:
+            return {...state , loading: !state.loading}
+
+        case typesActions.error:
+            return {...state , loading: false , error: !state.error}
+
+        case typesActions.success:
+            return {...state , loading: false , error: false}
 
         default:
             return {...state}

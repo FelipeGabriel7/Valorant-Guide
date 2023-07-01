@@ -10,13 +10,24 @@ import {
     modal_desc_button
 } from './index.module.scss'
 import { AiFillSound} from 'react-icons/ai'
+import { useRef, useState } from 'react'
 
 
-export const Modal = ({ data, modalState }) => {
+export const Modal = ({ data, modalState , audio }) => {
+
+    console.log(audio)
+
+
+    function playAudio () {
+
+        let ad = audio
+        ad.play()
+    }
 
     function handleClose() {
         modalState(false)
     }
+
 
 
     return (
@@ -42,7 +53,11 @@ export const Modal = ({ data, modalState }) => {
 
                     </div>
                   
-                   <button className={modal_desc_button}> Ouvir Som <AiFillSound/>  </button>
+                    <button 
+                    className={modal_desc_button}
+                    onClick={()=> playAudio()}>
+                    <AiFillSound/>
+                </button>
 
                 </div>
 

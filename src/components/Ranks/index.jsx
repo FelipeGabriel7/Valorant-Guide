@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import {
-    container, container_ranks, container_card_ranks
+    container, container_ranks, container_card_ranks , container_card_ranks_title
 } from './index.module.scss'
 import axios from 'axios'
 
@@ -44,9 +44,6 @@ export const RankComponent = () => {
 
                             <>
 
-                               
-                               
-
                                 <div key={id} className={container_card_ranks} style={{
 
                                     display: 'flex',
@@ -64,9 +61,7 @@ export const RankComponent = () => {
 
                                         }} />
                                     )}
-                                    <span style={{
-
-                                    }}
+                                    <span className={container_card_ranks_title}
                                     > {rank.tierName} </span>
                                 </div>
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import {card , card_image , card_name , abilities , abilities_image , card_buttons , card_buttons_details , card_buttons_favorites} from './index.module.scss'
+import {card , card_image , card_name , abilities , abilities_image , card_buttons , 
+    card_buttons_details , card_buttons_favorites , error_card} from './index.module.scss'
 import axios from 'axios'
 import { Modal } from '../Modal'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,7 +10,11 @@ export const CardAgent = ({ agent }) => {
 
     const [modal , setModal] = useState(false)
     const [data , setData] = useState([])
-    const { favorites } = useSelector((rootReducer) => rootReducer.favoriteReducer)
+    const { favorites , error } = useSelector((rootReducer) => rootReducer.favoriteReducer)
+    const [message , setMessage] = useState({
+        status: false,
+        messageText: error
+    })
     const audio = useState(new Audio())
     console.log(favorites)
 
@@ -30,13 +35,44 @@ export const CardAgent = ({ agent }) => {
 
 
     function handleAdd(item){
+
+        const existFavorites = favorites.map(fav => {
+           console.log(fav)
+        })
+
+        console.log(existFavorites)
+
+     
+  
         favoritePerson(dispatch , item)
     }
+
+   
+    function handleMessage(){
+
+ 
+
+        setMessage(prevMessage => ({...prevMessage , status: !message.status}))
+
+        setTimeout(() => {
+            setMessage(prevMessage => ({...prevMessage , status: false}))
+        } , 3000)
+
+    }
+
 
 
     return (
 
         <>
+
+        {message.status && (
+            <div className={error_card} style={{display: 'flex'}}> {error ? error : ''} </div>
+        )}
+
+       
+
+       
 
         <div className={card}>
             <img className={card_image} src={agent.displayIcon} alt={agent.displayName} />

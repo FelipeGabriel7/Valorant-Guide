@@ -8,6 +8,21 @@
     box-shadow: 0.2em 0.2em 0.5em #0a0a0a;
 }
 
+.error_card{
+    width: 60%;
+    border-radius: 0.6em;
+    box-shadow: 0.1em 0.1em 0.1em rgb(45, 45, 45);
+    top: 15%;
+    left: 40%;
+    padding: 2em;
+    color: #fff;
+    font-size: 1.3em;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    background: rgb(55, 55, 55);
+    display: none;
+}
 
 .card{
     min-width: 30%;

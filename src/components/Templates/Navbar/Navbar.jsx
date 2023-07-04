@@ -14,7 +14,7 @@ import imageLogo from '../../../utils/images/valorant-logo-removebg-preview.png'
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { CgMenu } from 'react-icons/cg'
-import { AiOutlineClose } from 'react-icons/ai'
+import { AiOutlineClose, AiOutlineStar } from 'react-icons/ai'
 
 
 function NavbarComponent() {
@@ -59,7 +59,7 @@ function NavbarComponent() {
                         </>
 
                 <div className={Navbar_container_invetory}>
-                    <Link className={link} to="/favorites"> Favoritos ( {stateFavorites.count} ) </Link>
+                    <Link className={link} to="/favorites"> <AiOutlineStar/> ( {stateFavorites.count} ) </Link>
                 </div>
 
             </nav>

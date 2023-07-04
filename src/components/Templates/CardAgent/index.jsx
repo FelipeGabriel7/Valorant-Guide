@@ -12,7 +12,7 @@ export const CardAgent = ({ agent }) => {
     const [data , setData] = useState([])
     const { favorites , error } = useSelector((rootReducer) => rootReducer.favoriteReducer)
     const [message , setMessage] = useState({
-        status: false,
+        status: error ? true : false,
         messageText: error
     })
     const audio = useState(new Audio())
@@ -35,22 +35,13 @@ export const CardAgent = ({ agent }) => {
 
 
     function handleAdd(item){
-
-        const existFavorites = favorites.map(fav => {
-           console.log(fav)
-        })
-
-        console.log(existFavorites)
-
-     
-  
+        handleMessage()
         favoritePerson(dispatch , item)
     }
 
    
     function handleMessage(){
 
- 
 
         setMessage(prevMessage => ({...prevMessage , status: !message.status}))
 
@@ -67,7 +58,12 @@ export const CardAgent = ({ agent }) => {
         <>
 
         {message.status && (
-            <div className={error_card} style={{display: 'flex'}}> {error ? error : ''} </div>
+            <div className={error_card} 
+            style={{
+                display: 'flex',
+                background: `${error ? '#000' : '#f14'}`    
+            }}> 
+            {error ? error : ' Personagem Adicionado com sucesso '} </div>
         )}
 
        

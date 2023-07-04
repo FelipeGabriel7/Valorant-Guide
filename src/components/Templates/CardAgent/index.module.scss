@@ -12,7 +12,7 @@
     width: 60%;
     border-radius: 0.6em;
     box-shadow: 0.1em 0.1em 0.1em rgb(45, 45, 45);
-    top: 15%;
+    top: 12%;
     left: 40%;
     padding: 2em;
     color: #fff;
@@ -22,6 +22,12 @@
     position: fixed;
     background: rgb(55, 55, 55);
     display: none;
+
+
+    &:hover{
+        animation-name: messageAlert;
+        animation-duration: 0.6s;
+    }
 }
 
 .card{
@@ -108,5 +114,14 @@
     }
 }
 
+@keyframes messageAlert{
+    0%{
+        transition: 0.5s all ease-in;
+        transform: translateX(300px);
+    }100%{
+        transition: 0.5s all ease-in;
+        transform: translateX(0px);
+    }
+}
 
 

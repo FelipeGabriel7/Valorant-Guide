@@ -1,0 +1,61 @@
+.container{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    height: auto;
+    overflow-x: hidden;
+
+    &_gamemode{
+        display: grid;
+        grid-template-columns: repeat(auto-fit , minmax(350px , 1fr));
+        gap: 2em;
+        width: 100%;
+        margin-top: 8em;
+        padding: 1em;
+        padding-bottom: 5em;
+        color: #000;
+
+
+        &_card{
+            background: rgb(205, 14, 0);
+            border-radius: 0.8em;
+            box-shadow: 0.2em 0.2em 0.4em #000;
+            padding: 1.5em;
+            display: flex;
+            color: #fff;
+            gap: 1em;
+            align-items: center;
+            flex-direction: column;
+            cursor: pointer;
+            font-weight: 600;
+            transition: .6s all ease-in;
+
+            &:hover{
+                transition: .6s all ease-in;
+                color: #000;
+                background: #dddddd;
+            }
+
+            &:hover span{
+                transform: translateX(10px);
+                transition: .1s all ease-in;
+                opacity: 1;
+            }
+
+
+            &>img{
+                width: 100%;
+            }
+
+            &>span{
+          
+                display: flex;
+                justify-content: space-between;
+                gap: 2em;
+                opacity: 0;
+                font-size: 1.2em;
+                align-items: center;
+            }
+        }
+    }
+
+
+}

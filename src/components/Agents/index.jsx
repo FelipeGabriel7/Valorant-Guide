@@ -7,22 +7,22 @@ import { rootReducer } from '../../reducers/rootReducer'
 import { LoadingPerson, sucessPerson } from '../../reducers/favoriteReducer/actions'
 
 export const AgentsComponent = () => {
-    const [agents , setAgents] = useState([])
+    const [agents, setAgents] = useState([])
     const { loading } = useSelector(rootReducer => rootReducer.favoriteReducer);
     const dispatch = useDispatch()
 
 
-    async function fetchData(){
+    async function fetchData() {
 
         const request = await axios.get('https://valorant-api.com/v1/agents')
 
-        if(request.status === 200){
+        if (request.status === 200) {
 
-            
-                setAgents(
-                    request.data.data
+
+            setAgents(
+                request.data.data
             )
-         
+
 
         }
 
@@ -41,30 +41,37 @@ export const AgentsComponent = () => {
 
     return (
         <>
-          
-           
 
-            <div className={container}>
+            <div>
 
-            {loading && (
-                <h1> Carregando ,,,, </h1>
-            )}
 
-                {agents && agents.map(agent => {
+                <div className={container}>
 
-                    if(agent.uuid == '320b2a48-4d9b-a075-30f1-1f93a9b638fa'){
-                        return;
-                    }
-                    return (
-                         <CardAgent agent={agent} key={agent.uuid} />    
-                    )
-                })}
+                    {loading && (
+                        <h1> Carregando ,,,, </h1>
+                    )}
+
+
+
+                    {agents && agents.map(agent => {
+
+                        if (agent.uuid == '320b2a48-4d9b-a075-30f1-1f93a9b638fa') {
+                            return;
+                        }
+                        return (
+                            <CardAgent agent={agent} key={agent.uuid} />
+                        )
+                    })}
+
+                </div>
 
             </div>
 
 
-            
-          
+
+
+
+
         </>
     )
 }

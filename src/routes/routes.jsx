@@ -8,6 +8,7 @@ import { FavoriteComponents } from "../components/Favorites";
 import { RankComponent } from "../components/Ranks";
 import { ArsenalComponent } from "../components/Arsenal";
 import { MapsComponent } from "../components/Maps";
+import { ComponentGameMode } from "../components/GameMode";
 
 
 
@@ -22,7 +23,7 @@ export const RoutesProject = () => {
                         <Route path="/ranks" element={ <RankComponent /> }/>
                         <Route path="/maps" element={ <MapsComponent/> }/>
                         <Route path="/weapons" element={ <ArsenalComponent/> }/>
-                        <Route path="/gamemode" element={{}} />
+                        <Route path="/gamemode" element={ <ComponentGameMode/> } />
                         <Route path="/favorites" element={ <FavoriteComponents/> }/>
                     </Routes>    
                     <Footer/>

@@ -1,24 +1,45 @@
 import { useDispatch, useSelector } from "react-redux"
 import { rootReducer } from "../../reducers/rootReducer"
 import { BsFillTrashFill} from 'react-icons/bs'
-import { container, container_title, container_favorite, card_favorite, card } from './index.module.scss'
+import { container, container_title, container_favorite, card_favorite, card , container_search } from './index.module.scss'
 import { removeFavorite } from "../../reducers/favoriteReducer/actions"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 
 export const FavoriteComponents = () => {
 
     const { favorites: items } = useSelector((rootReducer) => rootReducer.favoriteReducer)
     const dispatch = useDispatch()
     const [favorites , setFavorites] = useState(items)
+    const [search , setSearch] = useState('')
+    const referenceInput = useRef();
 
          
     const handleDelete = (item) => {
         removeFavorite(dispatch , item)
     }
 
+    const handleFilterItem = useCallback((it) => {
+        
+        const favoritesItem = favorites.filter(f => {
+            if(f.displayName === it){
+                return setSearch(f);
+            }
+        })
+
+        referenceInput.current = favoritesItem
+    }, [favorites])
+
     useEffect(() => {
         setFavorites(items)
     }, [items])
+
+
+    useEffect(() => {
+        handleFilterItem()
+
+        console.log(referenceInput)
+
+    } , [handleFilterItem , referenceInput])
     return (
 
         <>
@@ -27,6 +48,23 @@ export const FavoriteComponents = () => {
                 <div className={container}>
                     <h1 className={container_title}> Veja seus personagens favoritos  </h1>
 
+
+                    {favorites.length > 0 && (
+
+                        <div className={container_search}>
+
+
+                        <label>
+                            Busque seu personagem favorito
+                            <input type="search" placeholder="informe o nome do personagem" onChange={(e) => handleFilterItem(e.target.value)} />
+                            
+                        </label>
+
+                        </div>
+
+
+                    )}
+                   
 
                     <div className={card}>
 
@@ -41,7 +79,43 @@ export const FavoriteComponents = () => {
                             </h1>
                         )}
 
-                        {favorites && favorites.map(fav => (
+
+                        {search && (
+                             <div key={favorites.uuid} className={card_favorite}>
+
+                             <BsFillTrashFill
+                                 style={{
+                                     cursor: 'pointer',
+                                     color: '#f14'
+                                 }}
+
+                                 onClick={() => handleDelete(favorites[0])}
+                             /> 
+
+                             <img src={favorites[0].displayIcon}
+                                 style={{
+                                     background: '#fff',
+                                     padding: '0.2em',
+                                     borderRadius: '50%',
+                                     boxShadow: '0.1em 0.1em 0.4em #222'
+                                 }}
+
+                             />
+                             <h2 style={{
+                                 color: '#fff',
+                                 background: '#f14',
+                                 padding: '0.2em',
+                                 borderRadius: '0.6em',
+                                 fontWeight: '600'
+
+                             }}> {favorites[0].displayName} </h2>
+                         </div>
+                        )}
+
+
+
+
+                        {favorites &&favorites.map(fav => (
                             <div key={fav.uuid} className={card_favorite}>
 
                                 <BsFillTrashFill

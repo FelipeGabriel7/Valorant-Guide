@@ -49,14 +49,11 @@ export const MapsComponent = () => {
 
         <motion.div className={slider_container_item_caroulsel} ref={referenceMap} whileTap={{ cursor: 'grabbing'}}>
             <motion.div className={slider_container_item_caroulsel_inner} drag="x" dragConstraints={{
-                right: 0,
+                right: 10,
                 left: -width
             }}
             initial={{
-                x: 100
-            }}
-            animate={{
-                x: 0
+                x: 10
             }}
             transition={{
                 duration: 0.8

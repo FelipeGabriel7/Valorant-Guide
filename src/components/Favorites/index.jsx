@@ -11,35 +11,39 @@ export const FavoriteComponents = () => {
     const dispatch = useDispatch()
     const [favorites , setFavorites] = useState(items)
     const [search , setSearch] = useState('')
-    const referenceInput = useRef();
+    const [itemFilter , setItemFilter] = useState(false)
 
          
     const handleDelete = (item) => {
         removeFavorite(dispatch , item)
     }
 
-    const handleFilterItem = useCallback((it) => {
-        
-        const favoritesItem = favorites.filter(f => {
-            if(f.displayName === it){
-                return setSearch(f);
-            }
-        })
-
-        referenceInput.current = favoritesItem
-    }, [favorites])
-
     useEffect(() => {
         setFavorites(items)
     }, [items])
 
+    const handleFilterItem = useCallback(() => {
+  
 
-    useEffect(() => {
+        const favoriteExist = favorites.filter(fav => {
+            if(fav.displayName.toLowerCase().includes(search.toLowerCase())){
+                return fav
+            }
+
+            return false
+        })
+
+
+        setItemFilter(favoriteExist)
+    }, [search , favorites])
+
+
+    useEffect(() => { 
         handleFilterItem()
+    }, [search , handleFilterItem])
+ 
 
-        console.log(referenceInput)
-
-    } , [handleFilterItem , referenceInput])
+  
     return (
 
         <>
@@ -56,8 +60,8 @@ export const FavoriteComponents = () => {
 
                         <label>
                             Busque seu personagem favorito
-                            <input type="search" placeholder="informe o nome do personagem" onChange={(e) => handleFilterItem(e.target.value)} />
-                            
+                            <input type="search" placeholder="informe o nome do personagem" onChange={(e) => setSearch(e.target.value)} />
+                          
                         </label>
 
                         </div>
@@ -79,20 +83,22 @@ export const FavoriteComponents = () => {
                             </h1>
                         )}
 
+                        {/* {!!itemFilter && (
+                            <p style={{
+                                width: '100%',
+                                height: '50vh',
+                                textAlign: 'center',
+                                fontSize: '2em '
 
-                        {search && (
-                             <div key={favorites.uuid} className={card_favorite}>
+                            }}> Esse personagem não existe nos seus favoritos </p>
+                        )} */}
 
-                             <BsFillTrashFill
-                                 style={{
-                                     cursor: 'pointer',
-                                     color: '#f14'
-                                 }}
 
-                                 onClick={() => handleDelete(favorites[0])}
-                             /> 
+                   
+                        {(itemFilter && search !== '') && (
+                             <div className={card_favorite}>
 
-                             <img src={favorites[0].displayIcon}
+                             <img src={itemFilter[0]?.displayIcon}
                                  style={{
                                      background: '#fff',
                                      padding: '0.2em',
@@ -108,14 +114,12 @@ export const FavoriteComponents = () => {
                                  borderRadius: '0.6em',
                                  fontWeight: '600'
 
-                             }}> {favorites[0].displayName} </h2>
+                             }}> {itemFilter[0]?.displayName} </h2>
                          </div>
                         )}
 
 
-
-
-                        {favorites &&favorites.map(fav => (
+                        {(favorites && search === '') && favorites.map(fav => (
                             <div key={fav.uuid} className={card_favorite}>
 
                                 <BsFillTrashFill

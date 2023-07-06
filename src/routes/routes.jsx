@@ -9,6 +9,7 @@ import { RankComponent } from "../components/Ranks";
 import { ArsenalComponent } from "../components/Arsenal";
 import { MapsComponent } from "../components/Maps";
 import { ComponentGameMode } from "../components/GameMode";
+import { NotFound } from "../components/NotFound";
 
 
 
@@ -25,6 +26,7 @@ export const RoutesProject = () => {
                         <Route path="/weapons" element={ <ArsenalComponent/> }/>
                         <Route path="/gamemode" element={ <ComponentGameMode/> } />
                         <Route path="/favorites" element={ <FavoriteComponents/> }/>
+                        <Route path="*" element={ <NotFound/> } /> 
                     </Routes>    
                     <Footer/>
             </Container>

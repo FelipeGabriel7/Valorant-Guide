@@ -15,10 +15,6 @@ export const RankComponent = () => {
                     setRanks(res.data.data[4].tiers)
                 }
 
-
-
-
-
             )
             .catch(e => {
                 console.log(e)
@@ -26,9 +22,7 @@ export const RankComponent = () => {
 
     }
 
-    console.log(' Cheguei aqui ')
-    console.log(ranks)
-
+  
     useEffect(() => {
         getRanks()
     }, [])

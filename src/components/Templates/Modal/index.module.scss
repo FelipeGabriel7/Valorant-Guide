@@ -25,6 +25,12 @@
     }
 
 
+    @include mobile{
+        top: 30%;
+        width: 80%;
+    }
+
+
     &::-webkit-scrollbar {
         width: 10px;               /* width of the entire scrollbar */
     }

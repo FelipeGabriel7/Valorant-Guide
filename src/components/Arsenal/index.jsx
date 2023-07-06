@@ -39,7 +39,6 @@ export const ArsenalComponent = () => {
     }, [dispatch])
 
 
-    console.log(equipaments)
 
 
     return (

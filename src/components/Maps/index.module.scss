@@ -1,3 +1,5 @@
+@use '../../styles/medias_layouts';
+
 .slider_container_item{
     display: flex;
     flex-direction: column;
@@ -36,6 +38,11 @@
     &:hover &_title{
         transition: .8s all ease-in;
         opacity: 1;
+
+        @include medias_layouts.mobile{
+          top: 15%;
+          border-radius: 0.4em;
+        }
     }
 
     &_image{
@@ -43,6 +50,11 @@
         box-shadow: 0.2em 0.2em 0.5em;
         border-radius: 0.5em;
         border-radius: 0.6em;
+
+        @include medias_layouts.mobile{
+            margin-top: 5em;
+            max-width: 800px;
+        }
     }
 
     &_title{

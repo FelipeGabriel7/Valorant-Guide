@@ -15,8 +15,8 @@ export const CardAgent = ({ agent }) => {
         status: error ? true : false,
         messageText: error
     })
-    const audio = useState(new Audio())
-    console.log(favorites)
+    const [audio , setAudio] = useState(new Audio())
+
 
     const dispatch = useDispatch();
 
@@ -27,7 +27,7 @@ export const CardAgent = ({ agent }) => {
         try {
             const request = await axios.get('https://valorant-api.com/v1/agents/' + uuid)
             setData(request.data.data)
-            audio.src = request.data.data.voiceLine.mediaList[0].wave
+            audio.src = request.data.data.voiceLine?.mediaList[0].wave
         }catch(e){
             console.log(e)
         }
@@ -89,7 +89,7 @@ export const CardAgent = ({ agent }) => {
         </div>
 
         {modal &&  (
-            <Modal data={agent} modalState={setModal} audio={audio}/> 
+            <Modal data={agent} modalState={setModal} audio={audio} setAudio={setAudio}/> 
         )}
         
         </>

@@ -10,12 +10,11 @@ import {
     modal_desc_button
 } from './index.module.scss'
 import { AiFillSound} from 'react-icons/ai'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect } from 'react'
 
 
-export const Modal = ({ data, modalState , audio }) => {
+export const Modal = ({ data, modalState , audio  , setAudio}) => {
 
-    console.log(audio)
 
     function handleClose() {
         modalState(false)
@@ -23,13 +22,10 @@ export const Modal = ({ data, modalState , audio }) => {
 
 
     function handleAudio(){
-        const audioN = new Audio('audio');
-        audioN.play()
+        setAudio(audio)
+        audio.play();
     }
 
-    useEffect(() => {
-        handleAudio
-    }, [audio])
 
 
 
